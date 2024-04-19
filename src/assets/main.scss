@@ -1,0 +1,143 @@
+@use "_variables.scss" as v;
+
+html {
+  font-family: monospace, system-ui;
+  font-size: 1rem;
+}
+
+body {
+  margin: 0;
+  background-color: v.$color-background;
+  color: v.$color-on-background;
+}
+
+header {
+  text-align: center;
+  h1 {
+    margin: 4rem auto;
+    color: v.$color-secondary;
+  }
+}
+
+main {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-family: inherit;
+  font-size: 4rem;
+  line-height: 8rem;
+}
+
+h2 {
+  font-family: inherit;
+  font-size: 1.5rem;
+}
+
+#loading {
+  @extend h2;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin: 4.25rem auto;
+  animation: fadePulse 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadePulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+p {
+  font-family: inherit;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.container {
+  @extend div;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem auto;
+  border-radius: v.$border-radius-default;
+  width: 80vw;
+  max-width: 48rem;
+  padding: v.$padding-default;
+  background-color: v.$color-primary;
+  color: v.$color-on-primary;
+}
+
+.box {
+  @extend div;
+  margin: v.$margin-default;
+  border-radius: v.$border-radius-default;
+  padding: v.$padding-default;
+  background-color: v.$color-primary-variant;
+}
+
+.flex-row {
+  @extend div;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$gap-default;
+}
+
+button, input {
+  box-sizing: border-box;
+  margin: v.$margin-default;
+  border: none;
+  border-radius: v.$border-radius-default;
+  padding: v.$padding-default;
+}
+
+button {
+  background-color: v.$color-secondary;
+  color: v.$color-on-secondary;
+  font-family: inherit;
+  font-size: inherit;
+  &:disabled {
+    opacity: .5;
+  }
+  &:hover:not([disabled]) {
+    background-color: v.$color-secondary-variant;
+  }
+}
+
+input[type="text"] {
+  width: 100%;
+  background-color: v.$color-primary-variant;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  &:focus {
+    outline: v.$color-secondary solid v.$border-width-default;
+  }
+  &:disabled {
+    opacity: .25;
+  }
+  &::placeholder {
+    color: inherit;
+    opacity: .25;
+  }
+}
